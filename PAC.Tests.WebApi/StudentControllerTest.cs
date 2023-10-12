@@ -24,11 +24,10 @@ public class StudentControllerTest
     [TestMethod]
     public void PostStudentOk() 
     {
-        var result = _controller.Post(_studentMock) as ObjectResult;
-        var statusCode = result.StatusCode;
+        var student = new Student();
+        var result = _controller!.Post(student) as ObjectResult;
 
         _studentMock!.VerifyAll();
         Assert.AreEqual(200, result.StatusCode);
-
     }
 }
