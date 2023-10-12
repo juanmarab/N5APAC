@@ -30,4 +30,15 @@ public class StudentControllerTest
         _studentMock!.VerifyAll();
         Assert.AreEqual(200, result.StatusCode);
     }
+
+    [TestMethod]
+    [ExpectedException(typeof(Exception))]
+    public void PostStudentFail() 
+    {
+        var student = new Student();
+        var result = _controller!.Post(student) as ObjectResult;
+
+        _studentMock!.VerifyAll();
+        Assert.AreEqual(500, result.StatusCode);
+    }
 }
