@@ -28,5 +28,12 @@ namespace PAC.WebAPI
             _studentLogic.InsertStudents(value);
             return Ok();
         }
+
+        [HttpGet]
+        public IActionResult GetById([FromBody] int id)
+        {
+            var student = _studentLogic.GetStudentById(id);
+            return Ok(student);
+        }
     }
 }
