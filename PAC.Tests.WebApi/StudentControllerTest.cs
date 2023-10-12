@@ -25,6 +25,7 @@ public class StudentControllerTest
     public void PostStudentOk() 
     {
         var student = new Student();
+        _studentMock!.Setup(x => x.InsertStudents(student));
         var result = _controller!.Post(student) as ObjectResult;
 
         _studentMock!.VerifyAll();
