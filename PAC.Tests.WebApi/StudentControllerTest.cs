@@ -35,8 +35,8 @@ public class StudentControllerTest
     [ExpectedException(typeof(Exception))]
     public void PostStudentFail() 
     {
-        var student = new Student();
-        var result = _controller!.Post(student) as ObjectResult;
+        _studentMock!.Setup(x => x.InsertStudents(It.IsAny<Student>())).Throws(new Exception());
+        var result = _controller!.Post(It.IsAny<Student>()) as ObjectResult;
 
         _studentMock!.VerifyAll();
         Assert.AreEqual(500, result.StatusCode);
